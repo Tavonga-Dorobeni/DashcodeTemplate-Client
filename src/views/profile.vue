@@ -25,11 +25,11 @@
             </div>
           </div>
           <div class="flex-1">
-            <div
+            <!-- <div
               class="text-2xl font-medium text-slate-900 dark:text-slate-200 mb-[3px]"
             >
               Albert Flores
-            </div>
+            </div> -->
             <div class="text-sm font-light text-slate-600 dark:text-slate-400">
               Front End Developer
             </div>

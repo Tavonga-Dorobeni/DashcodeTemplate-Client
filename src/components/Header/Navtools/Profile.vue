@@ -13,10 +13,10 @@
       <div
         class="flex-none text-slate-600 dark:text-white text-sm font-normal items-center lg:flex hidden overflow-hidden text-ellipsis whitespace-nowrap"
       >
-        <span
+        <!-- <span
           class="overflow-hidden text-ellipsis whitespace-nowrap w-[85px] block"
           >Albert Flores</span
-        >
+        > -->
         <span class="text-base inline-block ml-[10px]"
           ><Icon icon="heroicons-outline:chevron-down"></Icon
         ></span>

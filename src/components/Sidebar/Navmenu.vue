@@ -96,14 +96,14 @@
       </Transition>
     </li>
     <li class="single-sidebar-menu">
-      <a
+      <!-- <a
         href="https://dashcode-doc.codeshaper.tech/"
         target="_blank"
         class="menu-link"
       >
         <span class="menu-icon"><Icon icon="heroicons:document" /></span>
         <div class="text-box">Documentation</div>
-      </a>
+      </a> -->
     </li>
   </ul>
 </template>

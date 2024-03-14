@@ -6,6 +6,12 @@ import project from "./app/project";
 import apptodo from "./app/todo";
 import auth from "./app/auth";
 import user from "./app/user";
+import appointment from "./app/appointments";
+import claim from "./app/claims";
+import dependant from "./app/dependants";
+import medical_history from "./app/medical_history";
+import patient from "./app/patients";
+import procedure from "./app/procedures";
 
 export default createStore({
   state: {
@@ -86,5 +92,11 @@ export default createStore({
     chat,
     auth,
     user,
+    appointment,
+    claim,
+    dependant,
+    medical_history,
+    patient,
+    procedure
   },
 });

@@ -591,6 +591,22 @@ const routes = [
           hide: true,
         },
       },
+      {
+        path: "patients",
+        name: "patients",
+        component: () => import("@/views/app/patients"),
+        meta: {
+          hide: true,
+        },
+      },
+      {
+        path: "dependants",
+        name: "dependants",
+        component: () => import("@/views/app/dependants"),
+        meta: {
+          hide: true,
+        },
+      },
     ],
   },
   {
