@@ -2,7 +2,6 @@
   <div>
     <div class="flex flex-wrap justify-between items-center mb-4">
       <Breadcrumb />
-{{ claim }}
       <div>
         <p>
           Modern mobile phones often have a variety of different cameras installed (e.g. front, rear,
@@ -151,6 +150,7 @@ const result = ref('')
 function onDetect(detectedCodes) {
   console.log(detectedCodes)
   result.value = JSON.stringify(detectedCodes.map((code) => code.rawValue))
+  claim.value = detectedCodes[0].rawValue
 }
 
 onMounted(async() => {
