@@ -2,7 +2,7 @@
   <div>
     <div class="flex flex-wrap justify-between items-center mb-4">
       <Breadcrumb />
-{{ devices }}
+{{ claim }}
       <div>
         <p>
           Modern mobile phones often have a variety of different cameras installed (e.g. front, rear,
