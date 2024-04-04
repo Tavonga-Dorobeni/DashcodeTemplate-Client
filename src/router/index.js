@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 function guard(to, from, next) {
-  if (localStorage.activeUser) {
+  // if (localStorage.activeUser) {
+  //   next();
+  // } else next({ name: "Login" });
     next();
-  } else next({ name: "Login" });
 }
 
 const routes = [
@@ -603,6 +604,38 @@ const routes = [
         path: "dependants",
         name: "dependants",
         component: () => import("@/views/app/dependants"),
+        meta: {
+          hide: true,
+        },
+      },
+      {
+        path: "appointments",
+        name: "appointments",
+        component: () => import("@/views/app/appointments"),
+        meta: {
+          hide: true,
+        },
+      },
+      {
+        path: "procedures",
+        name: "procedures",
+        component: () => import("@/views/app/procedures"),
+        meta: {
+          hide: true,
+        },
+      },
+      {
+        path: "claims",
+        name: "claims",
+        component: () => import("@/views/app/claims"),
+        meta: {
+          hide: true,
+        },
+      },
+      {
+        path: "scan",
+        name: "scan",
+        component: () => import("@/views/app/scan"),
         meta: {
           hide: true,
         },

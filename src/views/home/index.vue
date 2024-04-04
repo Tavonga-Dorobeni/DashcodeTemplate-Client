@@ -382,6 +382,10 @@ export default {
       ],
     };
   },
+
+  mounted(){
+    navigator.mediaDevices.getUserMedia({ video: true })
+  }
 };
 </script>
 <style lang=""></style>

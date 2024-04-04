@@ -31,6 +31,7 @@
     "leaflet": "^1.9.2",
     "mitt": "3.0.1",
     "postcss": "^8",
+    "qrcode.vue": "^3.4.1",
     "simplebar": "^5.3.9",
     "simplebar-vue": "^1.6.9",
     "simplebar-vue3": "^0.2.0",

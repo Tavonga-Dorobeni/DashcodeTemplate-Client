@@ -55,6 +55,13 @@ export const menuItems = [
     link: "procedures",
     roles:["ROLE_APPLICANT", "ROLE_RECRUITER"],
   },
+
+  {
+    title: "Scan",
+    icon: "heroicons-outline:users",
+    link: "scan",
+    roles:["ROLE_APPLICANT", "ROLE_RECRUITER"],
+  },
   
   // {
   //   title: "Chat",

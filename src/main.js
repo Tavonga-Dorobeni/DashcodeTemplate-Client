@@ -23,6 +23,7 @@ import store from "./store";
 import VCalendar from "v-calendar";
 import "v-calendar/dist/style.css";
 import {emitter} from './mitt';
+import VueQrcodeReader from './vue-qrcode-reader.umd.js';
 
 // window.emitter = emitter;
 
@@ -105,5 +106,6 @@ const app = createApp({
   app.use(VueGoodTablePlugin)
   app.use(VueApexCharts)
   app.use(VCalendar)
+  app.use(VueQrcodeReader)
   app.config.globalProperties.$emitter = emitter
   app.mount("#app");
