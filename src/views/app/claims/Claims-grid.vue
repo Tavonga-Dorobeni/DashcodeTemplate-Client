@@ -44,7 +44,7 @@
       </header>
       <!-- description -->
       <div class="text-slate-600 dark:text-slate-400 text-sm pt-4 pb-3">
-        <b>Appointment ID: </b> {{ item.AppointmentID }} <br/>
+        <b>Amount: </b> $ {{ item.Amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2}) }} <br/>
         <b>Account Holder: </b> {{ patients.filter(p => p.PatientID == appointments.filter(a => a.AppointmentID == item.AppointmentID).map(a => a.PatientID)[0]).map(p => p.Firstnames + " " + p.Surname)[0] }} <br/>
         <b>Dependant: </b> {{ dependants.filter(p => p.DependantID == appointments.filter(a => a.AppointmentID == item.AppointmentID).map(a => a.DependantID)[0]).map(p => p.FirstNames + " " + p.Surname)[0] }} <br/>
       </div>
@@ -69,7 +69,26 @@
         </div>
         <div class="text-right">
           <span
+            v-if="item.Status == 'Flagged'"
             class="inline-block text-center space-x-1 bg-warning-500 bg-opacity-[0.16] min-w-[110px] text-warning-500 text-xs font-normal px-2 py-1 rounded-full"
+          >
+            Flagged
+          </span>
+          <span
+            v-if="item.Status == 'Verified'"
+            class="inline-block text-center space-x-1 bg-success-500 bg-opacity-[0.16] min-w-[110px] text-success-500 text-xs font-normal px-2 py-1 rounded-full"
+          >
+            Verified
+          </span>
+          <span
+            v-if="item.Status == 'Paid'"
+            class="inline-block text-center space-x-1 bg-primary-500 bg-opacity-[0.16] min-w-[110px] text-primary-500 text-xs font-normal px-2 py-1 rounded-full"
+          >
+            Paid
+          </span>
+          <span
+            v-if="item.Status != 'Paid' && item.Status != 'Flagged' && item.Status != 'Verified'"
+            class="inline-block text-center space-x-1 bg-secondary-500 bg-opacity-[0.16] min-w-[110px] text-secondary-500 text-xs font-normal px-2 py-1 rounded-full"
           >
             Pending
           </span>
@@ -77,84 +96,122 @@
       </div>
     </Card>
     <Modal
-      title="Edit Claim"
+      :title="view? 'View Claim' : confirmation? 'Confirm Payment' : ''"
       label=""
       labelClass="btn-small"
       ref="modal2"
       centered sizeClass="max-w-5xl"
     >
-      <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
-        <VueSelect v-if="!view" label="Appointment ID"
-          ><vSelect :on-change="handleAppointmentChange(currentClaim.AppointmentID)" :options="appointments.map(a => a.AppointmentID)" v-model="currentClaim.AppointmentID"
-        /></VueSelect>
-        <Textinput
-          v-else
-          label="Appointment"
-          type="text"
-          :modelValue="currentClaim.AppointmentID"
-          name="appointment"
-          isReadonly="true"
-        />
-        <Textinput
-          label="Account Holder"
-          type="text"
-          :modelValue="currentPatient.value.map(p => `${p.Firstnames} ${p.Surname}`)"
-          placeholder="------"
-          name="account_holder"
-          :isReadonly="true"
-        />
-        <Textinput
-          label="Dependant"
-          type="text"
-          :modelValue="currentDependant.value.map(p => `${p.FirstNames} ${p.Surname}`)"
-          placeholder="-------"
-          name="dependant"
-          :isReadonly="true"
-        />
-        <Textinput
-          label="Date Scheduled"
-          type="text"
-          :modelValue="appointments.filter(a => a.AppointmentID == currentClaim.AppointmentID).map(a => a.DateScheduled)[0]"
-          placeholder="------"
-          name="ds"
-          :isReadonly="true"
-        />
-      </div>
+      <form v-if="view && !confirmation" class="space-y-4">
+        <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
+          <Textinput
+            label="Appointment ID"
+            type="text"
+            :modelValue="currentClaim.AppointmentID"
+            placeholder="------"
+            name="app_id"
+            isReadonly
+          />
+          <Textinput
+            label="Account Holder"
+            type="text"
+            :modelValue="currentPatient.value?.map(p => `${p.Firstnames} ${p.Surname}`)"
+            placeholder="------"
+            name="account_holder"
+            isReadonly
+          />
+          <Textinput
+            label="Dependant"
+            type="text"
+            :modelValue="currentDependant.value?.map(p => `${p.FirstNames} ${p.Surname}`)"
+            placeholder="-------"
+            name="dependant"
+            isReadonly
+          />
+          <Textinput
+            label="Date Scheduled"
+            type="text"
+            :modelValue="appointments.filter(a => a.AppointmentID == currentClaim.AppointmentID).map(a => a.DateScheduled)[0]"
+            placeholder="------"
+            name="ds"
+            isReadonly
+          />
+        </div>
 
-      <VueSelect v-if="!view" label="Procedures"
-        ><vSelect :options="procedures.map(a => a.Name)" v-model="currentClaim.Procedures" multiple
-      /></VueSelect>
-      <Textinput
-        v-else
-        label="Procedures"
-        type="text"
-        :modelValue="procedures.filter(p => currentClaim.procedures.map(p => p.ProcedureID).includes(p.ProcedureID)).map(p => p.Name)"
-        placeholder="--------"
-        name="procedures"
-        :isReadonly="view"
-      />
+        <p class="mt-2" >Procedures: </p>
 
-      <Textinput
-        label="Notes"
-        type="text"
-        v-model="currentClaim.Notes"
-        placeholder="-------"
-        name="notes"
-        :isReadonly="view"
-      />
+        <span
+          v-for="(item, i) in currentClaim.Procedures" :key="i"
+          class="inline-block text-center space-x-1 bg-success-500 bg-opacity-[0.16] min-w-[110px] text-success-500 text-xs font-normal px-2 py-1 rounded-full my-3 mr-2"
+        >
+          {{ item }}
+        </span>
 
-      <template v-if="!view" v-slot:footer>
-        <Button
-          text="Submit"
-          btnClass="btn-dark "
-          @click="updateClaim()"
-        />
-      </template>
-      <template v-else v-slot:footer>
+        <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
+          <Textinput
+            label="Notes"
+            type="text"
+            v-model="currentClaim.Notes"
+            placeholder="-------"
+            name="notes"
+            isReadonly
+          />     
+          
+          <Textinput
+            label="Claim Amount ($)"
+            type="text"
+            :modelValue="currentClaim.Amount?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2})"
+            placeholder="-------"
+            name="amount"
+            isReadonly
+          />  
+        </div>        
+      </form>
+
+      <form v-if="!view && confirmation && currentClaim.Status == 'Verified'" style="height: 350px;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 10px;">
+          <span class="pt-12">
+            <img
+              src="@/assets/images/all-img/verified.png"
+              alt=""
+              class="mt-10 ml-20 pl-10"
+              style="height: 150px;"
+            />
+            <div class="text-xl font-medium text-slate-900 mb-2 text-center">
+              Are you sure you want to confirm payment?
+            </div>
+          </span>          
+        </div>      
+      </form>
+
+      <form v-if="!view && confirmation && currentClaim.Status != 'Verified'" style="height: 350px;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 10px;">
+          <span class="pt-12">
+            <img
+              src="@/assets/images/all-img/flagged.jpg"
+              alt=""
+              class="mt-10 ml-20 pl-10"
+              style="height: 150px;"
+            />
+            <div class="text-xl font-medium text-slate-900 mb-2 text-center">
+              You cannot confirm payment for this claim!
+            </div>
+          </span>          
+        </div>      
+      </form>
+
+      <template v-if="(view && !confirmation) || (confirmation && currentClaim.Status != 'Verified')" v-slot:footer>
         <Button
           text="Close"
           btnClass="btn-dark "
-          @click="$refs.modal2.closeModal()"
+          @click="close()"
+        />
+      </template>
+      <template v-if="!view && confirmation && currentClaim.Status == 'Verified'" v-slot:footer>
+        <Button
+          text="Confirm"
+          btnClass="btn-dark "
+          @click="updateClaim()"
         />
       </template>
     </Modal>
@@ -185,6 +242,7 @@ const dependants = computed(() => store.getters.allDependants);
 const procedures = computed(() => store.getters.allProcedures);
 
 let view = ref(false);
+let confirmation = ref(false);
 let currentClaim = ref({});
 let currentPatient = reactive({});
 let currentDependant = reactive({});
@@ -202,22 +260,21 @@ const actions = ref([
     name: 'view',
     icon: 'heroicons:eye',
     doit: (data) => {
-      data.Procedures = procedures.filter(p => data.procedures.map(pr => pr.ProcedureID).includes(p.ProcedureID)).map(p => p.Name)
+      data.Procedures = procedures.value.filter(p => data.procedures.map(pr => pr.ProcedureID).includes(p.ProcedureID)).map(p => p.Name)
       currentPatient.value = patients.value.filter(p => p.PatientID == appointments.value.filter(a => a.AppointmentID == data.AppointmentID).map(a => a.PatientID)[0]);
       currentDependant.value = dependants.value.filter(p => p.DependantID == appointments.value.filter(a => a.AppointmentID == data.AppointmentID).map(a => a.DependantID)[0]);
       view.value = true;
+      confirmation.value = false;
       currentClaim.value = data;
       modal2.value.openModal();
     },
   },
   {
-    name: 'Edit',
+    name: 'Payment',
     icon: 'heroicons-outline:pencil-alt',
     doit: (data) => {
-      data.Procedures = procedures.filter(p => data.procedures.map(pr => pr.ProcedureID).includes(p.ProcedureID)).map(p => p.Name)
-      currentPatient.value = patients.value.filter(p => p.PatientID == appointments.value.filter(a => a.AppointmentID == data.AppointmentID).map(a => a.PatientID)[0]);
-      currentDependant.value = dependants.value.filter(p => p.DependantID == appointments.value.filter(a => a.AppointmentID == data.AppointmentID).map(a => a.DependantID)[0]);
       view.value = false;
+      confirmation.value = true;
       currentClaim.value = data;
       modal2.value.openModal();
     },
@@ -244,29 +301,27 @@ const actions = ref([
   },
 ]);
 
+const close = () => {
+  modal2.value.closeModal();
+}
+
 const updateClaim = () => {
   const toast = useToast();
-  currentClaim.value.procedures = procedures.value.filter(p => currentClaim.value.Procedures.includes(p.Name)).map(p => {ProcedureID: p.ProcedureID})
+  modal2.value.closeModal();
+  currentClaim.value.Status = 'Paid'
   store.dispatch('updateClaim', currentClaim.value)
   .then(response => {
-    modal2.value.closeModal();
     toast.success(response.data.message, {
       timeout: 2000,
     });    
   },
   error => {
-    modal2.value.closeModal();
     toast.error((error.response && error.response.data) ||
         error.data.message ||
         error.toString(), {
       timeout: 2000,
     });   
   })
-}
-
-const handleAppointmentChange = (AppointmentID) => {
-  currentPatient.value = patients.value.filter(p => p.PatientID == appointments.value.filter(a => a.AppointmentID == AppointmentID).map(a => a.PatientID)[0]);
-  currentDependant.value = dependants.value.filter(p => p.DependantID == appointments.value.filter(a => a.AppointmentID == AppointmentID).map(a => a.DependantID)[0]);
 }
 
 </script>
