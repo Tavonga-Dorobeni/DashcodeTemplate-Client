@@ -292,13 +292,11 @@ export default {
     },
 
     onDetect(detectedCodes) {
-      this.result = JSON.stringify(detectedCodes.map((code) => code.rawValue))
-      this.claim = detectedCodes[0].rawValue
-      console.log(claim)
       this.view = true
-      this.handleAppointmentChange(this.claim.AppointmentID)
-
+      this.handleAppointmentChange(detectedCodes[0].rawValue.AppointmentID)
+      this.claim = detectedCodes[0].rawValue
       this.$socket.client.emit('qrcode_detected', {});
+      // this.result = JSON.stringify(detectedCodes.map((code) => code.rawValue))
     },
 
     async onInit(){
