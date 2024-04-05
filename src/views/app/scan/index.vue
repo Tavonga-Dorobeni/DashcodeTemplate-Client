@@ -468,7 +468,7 @@ export default {
       this.handleEmit();
     })
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", this.handleResize());
     this.handleResize();
 
     navigator.permissions.query({name: 'camera'})
