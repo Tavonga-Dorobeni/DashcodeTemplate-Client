@@ -18,7 +18,7 @@
       </div>
       Console: {{ cnsl }}
       View: {{ view }}
-      Claim: {{ typeof claim }}
+      Claim: {{ claim }}
       Patient: {{ currentPatient }}
       Dependant: {{ currentDependant }}
 
@@ -288,15 +288,15 @@ export default {
     },
 
     handleAppointmentChange(AppointmentID) {
-      this.cnsl = this.claim.AppointmentID
+      this.cnsl = AppointmentID
       this.currentPatient = this.allPatients.filter(p => p.PatientID == this.allAppointments.filter(a => a.AppointmentID == AppointmentID).map(a => a.PatientID)[0]);
       this.currentDependant = this.allDependants.filter(p => p.DependantID == this.allAppointments.filter(a => a.AppointmentID == AppointmentID).map(a => a.DependantID)[0]);
     },
 
     onDetect(detectedCodes) {
       this.view = true
-      this.handleAppointmentChange(detectedCodes[0].rawValue.AppointmentID)
-      this.claim = detectedCodes[0].rawValue
+      this.handleAppointmentChange(JSON.parse(detectedCodes[0].rawValue).AppointmentID)
+      this.claim = JSON.parse(detectedCodes[0].rawValue)
       this.$socket.client.emit('qrcode_detected', {});
       // this.result = JSON.stringify(detectedCodes.map((code) => code.rawValue))
     },
