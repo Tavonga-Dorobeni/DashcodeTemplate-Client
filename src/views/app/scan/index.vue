@@ -288,7 +288,7 @@ export default {
     },
 
     handleAppointmentChange(AppointmentID) {
-      this.cnsl = AppointmentID
+      this.cnsl = this.claim.AppointmentID
       this.currentPatient = this.allPatients.filter(p => p.PatientID == this.allAppointments.filter(a => a.AppointmentID == AppointmentID).map(a => a.PatientID)[0]);
       this.currentDependant = this.allDependants.filter(p => p.DependantID == this.allAppointments.filter(a => a.AppointmentID == AppointmentID).map(a => a.DependantID)[0]);
     },
