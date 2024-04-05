@@ -16,8 +16,10 @@
           </option>
         </select>
       </div>
-
-      {{ claim }}
+      View: {{ view }}
+      Claim: {{ claim }}
+      Patient: {{ currentPatient }}
+      Dependant: {{ currentDependant }}
 
       <div v-if="view" class="md:space-x-4 items-center">
         <form class="space-y-4">
