@@ -167,19 +167,12 @@
         <div>
           <qrcode-stream
             :constraints="{ deviceId: selectedDevice.deviceId }"
-            :track="trackFunctionSelected"
             :formats="selectedBarcodeFormats"
             @error="onError"
             @detect="onDetect"
             @init="onInit"
             v-if="selectedDevice !== null"
           />
-          <p
-            v-else
-            class="error"
-          >
-            No cameras on this device
-          </p>
         </div>
       </div>
     </div>
@@ -223,13 +216,13 @@ export default {
       width: 0,
       isSkeletion: true,
       isSkeletion2: null,
-      trackFunctionOptions: [
-        { text: 'nothing (default)', value: undefined },
-        { text: 'outline', value: paintOutline },
-        { text: 'centered text', value: paintCenterText },
-        { text: 'bounding box', value: paintBoundingBox }
-      ],
-      trackFunctionSelected: this.trackFunctionOptions[1],
+      // trackFunctionOptions: [
+      //   { text: 'nothing (default)', value: undefined },
+      //   { text: 'outline', value: this.paintOutline() },
+      //   { text: 'centered text', value: this.paintCenterText() },
+      //   { text: 'bounding box', value: this.paintBoundingBox() }
+      // ],
+      // trackFunctionSelected: this.trackFunctionOptions[1],
       barcodeFormats: {
         aztec: false,
         code_128: false,
