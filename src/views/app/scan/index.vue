@@ -1,9 +1,98 @@
 <template>
   <div>
-    <div class="flex flex-wrap justify-between items-center mb-4">
+    <div class="justify-between items-center mb-4">
       <Breadcrumb />
-      <div>
-        <p>
+      <div v-if="view" class="md:space-x-4 items-center">
+        <form class="space-y-4">
+          <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
+            <Textinput
+              label="Appointment ID"
+              type="text"
+              :modelValue="claim.AppointmentID"
+              placeholder="------"
+              name="app_id"
+              isReadonly
+            />
+            <Textinput
+              label="Account Holder"
+              type="text"
+              :modelValue="currentPatient.value?.map(p => `${p.Firstnames} ${p.Surname}`)"
+              placeholder="------"
+              name="account_holder"
+              isReadonly
+            />
+            <Textinput
+              label="Dependant"
+              type="text"
+              :modelValue="currentDependant.value?.map(p => `${p.FirstNames} ${p.Surname}`)"
+              placeholder="-------"
+              name="dependant"
+              isReadonly
+            />
+            <Textinput
+              label="Date Scheduled"
+              type="text"
+              :modelValue="appointments.filter(a => a.AppointmentID == claim.AppointmentID).map(a => a.DateScheduled)[0]"
+              placeholder="------"
+              name="ds"
+              isReadonly
+            />
+          </div>
+
+          <p class="mt-2" >Procedures: </p>
+
+          <span
+            v-for="(item, i) in claim.Procedures" :key="i"
+            class="inline-block text-center space-x-1 bg-success-500 bg-opacity-[0.16] min-w-[110px] text-success-500 text-xs font-normal px-2 py-1 rounded-full my-3 mr-2"
+          >
+            {{ item }}
+          </span>
+
+          <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
+            <Textinput
+              label="Notes"
+              type="text"
+              v-model="claim.Notes"
+              placeholder="-------"
+              name="notes"
+              isReadonly
+            />     
+            
+            <Textinput
+              label="Claim Amount ($)"
+              type="text"
+              :modelValue="claim.Amount?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2})"
+              placeholder="-------"
+              name="amount"
+              isReadonly
+            />  
+          </div>
+        </form>        
+
+        <div
+          class="mt-6 md:flex md:space-x-4 md:justify-end items-center"
+          :class="width < 768 ? 'space-x-rb' : ''"
+        >
+          <Button
+            text="Re-scan"
+            btnClass="btn-dark "
+            @click="rescan()"
+          />  
+          <Button
+            text="Flag"
+            btnClass="btn-danger "
+            @click="flagClaim()"
+          />
+          <Button
+            text="Verify"
+            btnClass="btn-success "
+            @click="verifyClaim()"
+          />
+        </div>
+      </div>
+
+      <div v-else>
+        <!-- <p>
           Modern mobile phones often have a variety of different cameras installed (e.g. front, rear,
           wide-angle, infrared, desk-view). The one picked by default is sometimes not the best choice.
           If you want fine-grained control, which camera is used, you can enumerate all installed
@@ -58,7 +147,7 @@
 
         <p class="decode-result">
           Last result: <b>{{ result }}</b>
-        </p>
+        </p> -->
 
         <div>
           <qrcode-stream
@@ -151,6 +240,7 @@ function onDetect(detectedCodes) {
   console.log(detectedCodes)
   result.value = JSON.stringify(detectedCodes.map((code) => code.rawValue))
   claim.value = detectedCodes[0].rawValue
+  view.value = true
 }
 
 onMounted(async() => {
@@ -171,8 +261,6 @@ onMounted(async() => {
   .catch((error) => {
     console.log('Got error :', error);
   });
-
-  await navigator.getUserMedia({video: true})
 
   devices.value = (await navigator.mediaDevices.enumerateDevices()).filter(
     ({ kind }) => kind === 'videoinput'
