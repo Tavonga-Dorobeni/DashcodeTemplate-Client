@@ -319,11 +319,12 @@ export default {
       newClaim.procedures = this.allProcedures.filter(p => newClaim.Procedures.map(p => p.toUpperCase()).includes(p.Name.toUpperCase())).map(p => p.ProcedureID)
       this.$store.dispatch("createClaim", newClaim)
       .then(data =>{
+        console.log(data)
         const toast = useToast();
         // use vue-toast-notification app use
         this.$socket.client.emit('claim_flagged', {
           commit: 'newClaim',
-          data: response.data
+          data: data.data
         });
         this.claim = {};
         this.currentPatient = {};
@@ -352,11 +353,12 @@ export default {
       newClaim.procedures = this.allProcedures.filter(p => newClaim.Procedures.map(p => p.toUpperCase()).includes(p.Name.toUpperCase())).map(p => p.ProcedureID)
       this.$store.dispatch("createClaim", newClaim)
       .then(data =>{
+        console.log(data)
         const toast = useToast();
         // use vue-toast-notification app use
         this.$socket.client.emit('claim_verified', {
           commit: 'newClaim',
-          data: response.data
+          data: data.data
         });
         this.claim = {};
         this.currentPatient = {};
