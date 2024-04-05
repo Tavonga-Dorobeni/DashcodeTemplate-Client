@@ -316,7 +316,7 @@ export default {
 
     flagClaim(newClaim) {
       newClaim.Status = "Flagged"
-      newClaim.procedures = this.allProcedures.filter(p => newClaim.Procedures.includes(p.Name)).map(p => p.ProcedureID)
+      newClaim.procedures = this.allProcedures.filter(p => newClaim.Procedures.map(p => p.toUpperCase()).includes(p.Name.toUpperCase())).map(p => p.ProcedureID)
       this.$store.dispatch("createClaim", newClaim)
       .then(data =>{
         const toast = useToast();
@@ -349,7 +349,7 @@ export default {
 
     verifyClaim(newClaim) {
       newClaim.Status = "Verified"
-      newClaim.procedures = this.allProcedures.filter(p => newClaim.Procedures.includes(p.Name)).map(p => p.ProcedureID)
+      newClaim.procedures = this.allProcedures.filter(p => newClaim.Procedures.map(p => p.toUpperCase()).includes(p.Name.toUpperCase())).map(p => p.ProcedureID)
       this.$store.dispatch("createClaim", newClaim)
       .then(data =>{
         const toast = useToast();
