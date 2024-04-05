@@ -16,6 +16,7 @@
           </option>
         </select>
       </div>
+      Console: {{ cnsl }}
       View: {{ view }}
       Claim: {{ claim }}
       Patient: {{ currentPatient }}
@@ -287,8 +288,9 @@ export default {
     },
 
     handleAppointmentChange(AppointmentID) {
-      this.currentPatient = this.allPatients.filter(p => p.PatientID == this.allAppointments.filter(a => a.AppointmentID == AppointmentID)).map(a => a.PatientID)[0];
-      this.currentDependant = this.allDependants.filter(p => p.DependantID == this.allAppointments.filter(a => a.AppointmentID == AppointmentID)).map(a => a.DependantID)[0];
+      this.cnsl = AppointmentID
+      this.currentPatient = this.allPatients.filter(p => p.PatientID == this.allAppointments.filter(a => a.AppointmentID == AppointmentID).map(a => a.PatientID)[0]);
+      this.currentDependant = this.allDependants.filter(p => p.DependantID == this.allAppointments.filter(a => a.AppointmentID == AppointmentID).map(a => a.DependantID)[0]);
     },
 
     onDetect(detectedCodes) {
