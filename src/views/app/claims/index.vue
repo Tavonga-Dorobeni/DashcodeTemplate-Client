@@ -300,6 +300,7 @@ const handleNew = (new_claim) => {
 }
 
 const handleCancel = () => {
+  loading.value = false;
   view.value = false;
 }
 

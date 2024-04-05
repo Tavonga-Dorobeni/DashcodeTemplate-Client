@@ -3,6 +3,7 @@
     <div class="justify-between items-center mb-4">
       <Breadcrumb />
       <div
+        v-if="view"
         class="md:flex md:space-x-4 md:justify-end items-center"
         :class="width < 768 ? 'space-x-rb' : ''"
       >
@@ -16,11 +17,6 @@
           </option>
         </select>
       </div>
-      Console: {{ cnsl }}
-      View: {{ view }}
-      Claim: {{ claim }}
-      Patient: {{ currentPatient }}
-      Dependant: {{ currentDependant }}
 
       <div v-if="view" class="md:space-x-4 items-center">
         <form class="space-y-4">
@@ -325,7 +321,7 @@ export default {
       .then(data =>{
         const toast = useToast();
         // use vue-toast-notification app use
-        this.$socket.client.emit('socketreq', {
+        this.$socket.client.emit('claim_flagged', {
           commit: 'newClaim',
           data: response.data
         });
@@ -358,7 +354,7 @@ export default {
       .then(data =>{
         const toast = useToast();
         // use vue-toast-notification app use
-        this.$socket.client.emit('socketreq', {
+        this.$socket.client.emit('claim_verified', {
           commit: 'newClaim',
           data: response.data
         });
