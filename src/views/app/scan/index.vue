@@ -2,6 +2,16 @@
   <div>
     <div class="justify-between items-center mb-4">
       <Breadcrumb />
+      {{ devices.map(d => d.label) }}
+      <select v-model="selectedDevice">
+        <option
+          v-for="device in devices"
+          :key="device.label"
+          :value="device"
+        >
+          {{ device.label }}
+        </option>
+      </select>
       <div v-if="view" class="md:space-x-4 items-center">
         <form class="space-y-4">
           <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
@@ -156,6 +166,7 @@
             :formats="selectedBarcodeFormats"
             @error="onError"
             @detect="onDetect"
+            @init="onInit"
             v-if="selectedDevice !== null"
           />
           <p
@@ -241,6 +252,16 @@ function onDetect(detectedCodes) {
   result.value = JSON.stringify(detectedCodes.map((code) => code.rawValue))
   claim.value = detectedCodes[0].rawValue
   view.value = true
+}
+
+async function onInit(){
+  devices.value = (await navigator.mediaDevices.enumerateDevices()).filter(
+    ({ kind }) => kind === 'videoinput'
+  )
+
+  if (devices.value.length > 0) {
+    selectedDevice.value = devices.value[devices.value.length - 1]
+  }
 }
 
 onMounted(async() => {
