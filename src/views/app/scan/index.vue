@@ -293,8 +293,9 @@ export default {
       this.cnsl = detectedCodes
       this.result = JSON.stringify(detectedCodes.map((code) => code.rawValue))
       this.claim = detectedCodes[0].rawValue
+      console.log(claim)
       this.view = true
-      handleAppointmentChange(this.claim.AppointmentID)
+      this.handleAppointmentChange(this.claim.AppointmentID)
 
       this.$socket.client.emit('qrcode_detected', {});
     },
