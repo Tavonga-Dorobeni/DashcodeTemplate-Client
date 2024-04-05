@@ -17,7 +17,7 @@
         </select>
       </div>
 
-      {{ cnsl }}
+      {{ claim }}
 
       <div v-if="view" class="md:space-x-4 items-center">
         <form class="space-y-4">
@@ -290,7 +290,6 @@ export default {
     },
 
     onDetect(detectedCodes) {
-      this.cnsl = detectedCodes
       this.result = JSON.stringify(detectedCodes.map((code) => code.rawValue))
       this.claim = detectedCodes[0].rawValue
       console.log(claim)
