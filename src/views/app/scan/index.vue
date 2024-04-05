@@ -18,7 +18,7 @@
       </div>
       Console: {{ cnsl }}
       View: {{ view }}
-      Claim: {{ JSON.parse(claim).AppointmentID }}
+      Claim: {{ typeof claim }}
       Patient: {{ currentPatient }}
       Dependant: {{ currentDependant }}
 
