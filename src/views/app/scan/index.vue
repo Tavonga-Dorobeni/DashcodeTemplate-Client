@@ -110,7 +110,7 @@
         </div>
       </div>
 
-      <div v-else>
+      <div v-if="!view">
         <!-- <p>
           Modern mobile phones often have a variety of different cameras installed (e.g. front, rear,
           wide-angle, infrared, desk-view). The one picked by default is sometimes not the best choice.
