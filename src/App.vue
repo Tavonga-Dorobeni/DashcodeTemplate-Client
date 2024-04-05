@@ -12,6 +12,9 @@ export default {
     socketres(res) {
       this.$store.commit(`${res.commit}`, res.data)
     },
+    qr_detection_res(res) {
+      this.$emitter.emit('qrcode_detected', {})
+    },
   }
 }
 </script>

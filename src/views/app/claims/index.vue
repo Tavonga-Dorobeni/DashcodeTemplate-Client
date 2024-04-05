@@ -40,8 +40,8 @@
           ref="modal2"
           centered sizeClass="max-w-5xl"
         >
-          <form class="space-y-4">
-            <div v-if="!view" class="grid lg:grid-cols-2 grid-cols-1 gap-5">
+          <form v-if="!view && !flagged && !verified" class="space-y-4">
+            <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
               <VueSelect label="Appointment ID"
                 ><vSelect :on-change="handleAppointmentChange(claim.AppointmentID)" :options="appointments.map(a => a.AppointmentID)" v-model="claim.AppointmentID"
               /></VueSelect>
@@ -71,11 +71,11 @@
               />
             </div>
 
-            <VueSelect v-if="!view" label="Procedures"
+            <VueSelect label="Procedures"
               ><vSelect :on-change="handleProceduresChange(claim.Procedures)" :options="procedures.map(a => a.Name)" v-model="claim.Procedures" multiple
             /></VueSelect>
 
-            <div v-if="!view" class="grid lg:grid-cols-2 grid-cols-1 gap-5">
+            <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
               <Textinput
                 label="Notes"
                 type="text"
@@ -94,7 +94,7 @@
               />  
             </div>
           </form>
-          <form v-if="view" style="height: 350px;">
+          <form v-if="view && !flagged && !verified" style="height: 350px;">
             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 10px;">
               <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
                 <span class="pt-12 mt-6">
@@ -104,22 +104,59 @@
                   <b class="text-sm text-slate-800">Ask patient to follow the steps below:</b>      
                   <p class="text-sm text-slate-800">1. Login to the Patient Portal <br/> 2. Scan the QR code <br/> 3. Verify or Flag the generated claim.</p>         
                 </span>
-                <span>
+                <span v-if="!loading">
                   <qrcode-vue :value="JSON.stringify(claim)" :size="300" level="H" />
-                </span>                
+                </span>
+                <span v-else>
+                  <img
+                    src="@/assets/images/all-img/loader.gif"
+                    alt=""
+                    class="mt-10 object-cover rounded-full"
+                  />
+                </span>          
               </div>
+            </div>
+          </form>
+          <form v-if="flagged && !verified" style="height: 350px;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 10px;">
+              <span class="pt-12">
+                <img
+                  src="@/assets/images/all-img/flagged.jpg"
+                  alt=""
+                  class="mt-10 ml-2"
+                  style="height: 150px;"
+                />
+                <div class="text-xl font-medium text-slate-900 mb-2 text-center">
+                  Claim was Flagged!
+                </div>
+              </span>          
+            </div>
+          </form>
+          <form v-if="!flagged && verified" style="height: 350px;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 10px;">
+              <span class="pt-12">
+                <img
+                  src="@/assets/images/all-img/verified.png"
+                  alt=""
+                  class="mt-10 ml-2"
+                  style="height: 150px;"
+                />
+                <div class="text-xl font-medium text-slate-900 mb-2 text-center">
+                  Claim was Verified!
+                </div>
+              </span>           
             </div>
           </form>
 
           <template v-slot:footer>
             <Button
-              v-if="!view"
+              v-if="!view && !flagged && !verified"
               text="Submit"
               btnClass="btn-dark "
               @click="handleNew(claim)"
             />
             <Button
-              v-else
+              v-if="view && !flagged && !verified"
               text="Cancel"
               btnClass="btn-dark "
               @click="handleCancel()"
@@ -172,6 +209,9 @@ const openClaim = () => {
 };
 
 let view = ref(false);
+let loading = ref(false);
+let flagged = ref(false);
+let verified = ref(false);
 let claim = ref({});
 let claimAmount = ref(0);
 let currentPatient = reactive({});
@@ -204,6 +244,24 @@ onMounted(() => {
 
   emitter.on('notification', () => {
     handleEmit();
+  })
+
+  emitter.on('qrcode_detected', () => {
+    loading.value = true;
+    flagged.value = false;
+    verified.value = false
+  })
+
+  emitter.on('claim_flagged', () => {
+    loading.value = false;
+    flagged.value = true;
+    verified.value = false
+  })
+
+  emitter.on('claim_verified', () => {
+    loading.value = false;
+    flagged.value = false;
+    verified.value = true
   })
 });
 
