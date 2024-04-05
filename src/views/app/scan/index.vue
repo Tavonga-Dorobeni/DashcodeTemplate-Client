@@ -17,6 +17,8 @@
         </select>
       </div>
 
+      {{ cnsl }}
+
       <div v-if="view" class="md:space-x-4 items-center">
         <form class="space-y-4">
           <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
@@ -176,7 +178,7 @@
         </div>
       </div>
     </div>
-    <qrcode-stream @detect="onDetect"></qrcode-stream>
+    <!-- <qrcode-stream @detect="onDetect"></qrcode-stream> -->
   </div>
 </template>
 
@@ -206,6 +208,7 @@ export default {
 
   data() {
     return {
+      cnsl: null,
       fillter: "grid",
       view: false,
       claim: {},
@@ -287,11 +290,11 @@ export default {
     },
 
     onDetect(detectedCodes) {
-      console.log(detectedCodes)
+      this.cnsl = detectedCodes
       this.result = JSON.stringify(detectedCodes.map((code) => code.rawValue))
       this.claim = detectedCodes[0].rawValue
-      handleAppointmentChange(this.claim.AppointmentID)
       this.view = true
+      handleAppointmentChange(this.claim.AppointmentID)
 
       this.$socket.client.emit('qrcode_detected', {});
     },
