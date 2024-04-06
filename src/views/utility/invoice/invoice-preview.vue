@@ -39,12 +39,12 @@
       >
         <div>
           <img
-            src="@/assets/images/logo/logo.svg"
+            src="@/assets/images/logo/MIFP.png"
             alt=""
             v-if="!this.$store.state.isDark"
           />
           <img
-            src="@/assets/images/logo/logo-white.svg"
+            src="@/assets/images/logo/MIFP-white.png"
             alt=""
             v-if="this.$store.state.isDark"
           />
@@ -52,7 +52,7 @@
           <div
             class="text-slate-500 dark:text-slate-300 font-normal leading-5 mt-4 text-sm"
           >
-            Dashcode <br />
+            MIFP <br />
             House# 339, New DOHS, Mohakhali, <br />
             Dhaka - 1206, Bangladesh
             <div class="flex space-x-2 mt-2 leading-[1]">
@@ -61,7 +61,7 @@
             </div>
             <div class="mt-[6px] flex space-x-2 leading-[1]">
               <Icon icon="heroicons-outline:mail" />
-              <span>Dashcode@example.com</span>
+              <span>MIFP@example.com</span>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@
             </div>
             <div class="mt-[6px] flex space-x-2 leading-[1]">
               <Icon icon="heroicons-outline:mail" />
-              <span>Dashcode@example.com</span>
+              <span>MIFP@example.com</span>
             </div>
           </div>
         </div>

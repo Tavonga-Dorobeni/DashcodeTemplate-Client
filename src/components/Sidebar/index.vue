@@ -23,13 +23,13 @@
           v-if="!this.$store.state.sidebarCollasp"
         >
           <img
-            src="@/assets/images/logo/logo.svg"
+            src="@/assets/images/logo/MIFP.png"
             alt=""
             v-if="!this.$store.state.isDark && !this.$store.state.semidark"
           />
 
           <img
-            src="@/assets/images/logo/logo-white.svg"
+            src="@/assets/images/logo/MIFP-white.png"
             alt=""
             v-if="this.$store.state.isDark || this.$store.state.semidark"
           />
@@ -39,12 +39,12 @@
           v-if="this.$store.state.sidebarCollasp"
         >
           <img
-            src="@/assets/images/logo/logo-c.svg"
+            src="@/assets/images/logo/MIFP-c.png"
             alt=""
             v-if="!this.$store.state.isDark && !this.$store.state.semidark"
           />
           <img
-            src="@/assets/images/logo/logo-c-white.svg"
+            src="@/assets/images/logo/MIFP-c-white.png"
             alt=""
             v-if="this.$store.state.isDark || this.$store.state.semidark"
           />

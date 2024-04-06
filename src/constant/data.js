@@ -16,51 +16,51 @@ export const menuItems = [
 
   {
     title: "Users",
-    icon: "heroicons-outline:users",
+    icon: "heroicons-outline:user",
     link: "users",
-    roles:["ROLE_APPLICANT", "ROLE_RECRUITER"],
+    roles:["HOSPITAL ADMIN", "INSURANCE ADMIN"],
   },
 
   {
     title: "Patients",
     icon: "heroicons-outline:users",
     link: "patients",
-    roles:["ROLE_APPLICANT", "ROLE_RECRUITER"],
+    roles:["INSURANCE RECEPTIONIST", "HOSPITAL RECEPTIONIST"],
   },
 
   {
     title: "Dependants",
-    icon: "heroicons-outline:users",
+    icon: "heroicons-outline:user-group",
     link: "dependants",
-    roles:["ROLE_APPLICANT", "ROLE_RECRUITER"],
+    roles:["INSURANCE RECEPTIONIST", "HOSPITAL RECEPTIONIST"],
   },
 
   {
     title: "Appointments",
-    icon: "heroicons-outline:users",
+    icon: "heroicons-outline:clipboard-document-check",
     link: "appointments",
-    roles:["ROLE_APPLICANT", "ROLE_RECRUITER"],
+    roles:["HOSPITAL RECEPTIONIST"],
   },
 
   {
     title: "Claims",
-    icon: "heroicons-outline:users",
+    icon: "heroicons-outline:document-text",
     link: "claims",
-    roles:["ROLE_APPLICANT", "ROLE_RECRUITER"],
+    roles:["HOSPITAL ADMIN", "INSURANCE ADMIN"],
   },
 
   {
     title: "Procedures",
-    icon: "heroicons-outline:users",
+    icon: "heroicons-outline:squares-plus",
     link: "procedures",
-    roles:["ROLE_APPLICANT", "ROLE_RECRUITER"],
+    roles:["HOSPITAL RECEPTIONIST"],
   },
 
   {
     title: "Scan",
-    icon: "heroicons-outline:users",
+    icon: "heroicons-outline:qr-code",
     link: "scan",
-    roles:["ROLE_APPLICANT", "ROLE_RECRUITER"],
+    roles:["PATIENT"],
   },
   
   // {
@@ -418,41 +418,41 @@ export const menuItems = [
 // menuseetins
 
 export const ProfileMenu = [
-  {
-    label: "Profile",
-    icon: "heroicons-outline:user",
-    link: "#",
-  },
-  {
-    label: "Chat",
-    icon: "heroicons-outline:chat",
-    link: "chat",
-  },
-  {
-    label: "Email",
-    icon: "heroicons-outline:mail",
-    link: "email",
-  },
-  {
-    label: "Todo",
-    icon: "heroicons-outline:chip",
-    link: "todo",
-  },
-  {
-    label: "Settings",
-    icon: "heroicons-outline:cog",
-    link: "#",
-  },
-  {
-    label: "Price",
-    icon: "heroicons-outline:credit-card",
-    link: "pricing",
-  },
-  {
-    label: "Faq",
-    icon: "heroicons-outline:information-circle",
-    link: "faq",
-  },
+  // {
+  //   label: "Profile",
+  //   icon: "heroicons-outline:user",
+  //   link: "#",
+  // },
+  // {
+  //   label: "Chat",
+  //   icon: "heroicons-outline:chat",
+  //   link: "chat",
+  // },
+  // {
+  //   label: "Email",
+  //   icon: "heroicons-outline:mail",
+  //   link: "email",
+  // },
+  // {
+  //   label: "Todo",
+  //   icon: "heroicons-outline:chip",
+  //   link: "todo",
+  // },
+  // {
+  //   label: "Settings",
+  //   icon: "heroicons-outline:cog",
+  //   link: "#",
+  // },
+  // {
+  //   label: "Price",
+  //   icon: "heroicons-outline:credit-card",
+  //   link: "pricing",
+  // },
+  // {
+  //   label: "Faq",
+  //   icon: "heroicons-outline:information-circle",
+  //   link: "faq",
+  // },
   {
     label: "Logout",
     icon: "heroicons-outline:login",
@@ -460,95 +460,95 @@ export const ProfileMenu = [
   },
 ];
 export const notifications = [
-  {
-    title: "Your order is placed",
-    desc: "Amet minim mollit non deser unt ullamco est sit aliqua.",
+  // {
+  //   title: "Your order is placed",
+  //   desc: "Amet minim mollit non deser unt ullamco est sit aliqua.",
 
-    image: "user.png",
-    link: "#",
-  },
-  {
-    title: "Congratulations Darlene  🎉",
-    desc: "Won the monthly best seller badge",
-    unread: true,
-    image: "user2.png",
-    link: "#",
-  },
-  {
-    title: "Revised Order 👋",
-    desc: "Won the monthly best seller badge",
+  //   image: "user.png",
+  //   link: "#",
+  // },
+  // {
+  //   title: "Congratulations Darlene  🎉",
+  //   desc: "Won the monthly best seller badge",
+  //   unread: true,
+  //   image: "user2.png",
+  //   link: "#",
+  // },
+  // {
+  //   title: "Revised Order 👋",
+  //   desc: "Won the monthly best seller badge",
 
-    image: "user3.png",
-    link: "#",
-  },
-  {
-    title: "Brooklyn Simmons",
-    desc: "Added you to Top Secret Project group...",
+  //   image: "user3.png",
+  //   link: "#",
+  // },
+  // {
+  //   title: "Brooklyn Simmons",
+  //   desc: "Added you to Top Secret Project group...",
 
-    image: "user4.png",
-    link: "#",
-  },
+  //   image: "user4.png",
+  //   link: "#",
+  // },
 ];
 export const message = [
-  {
-    title: "Wade Warren",
-    desc: "Hi! How are you doing?.....",
-    active: true,
-    hasnotifaction: true,
-    notification_count: 1,
-    image: "user.png",
-    link: "#",
-  },
-  {
-    title: "Savannah Nguyen",
-    desc: "Hi! How are you doing?.....",
-    active: false,
-    hasnotifaction: false,
-    image: "user2.png",
-    link: "#",
-  },
-  {
-    title: "Ralph Edwards",
-    desc: "Hi! How are you doing?.....",
-    active: false,
-    hasnotifaction: true,
-    notification_count: 8,
-    image: "user3.png",
-    link: "#",
-  },
-  {
-    title: "Cody Fisher",
-    desc: "Hi! How are you doing?.....",
-    active: true,
-    hasnotifaction: false,
-    image: "user4.png",
-    link: "#",
-  },
-  {
-    title: "Savannah Nguyen",
-    desc: "Hi! How are you doing?.....",
-    active: false,
-    hasnotifaction: false,
-    image: "user2.png",
-    link: "#",
-  },
-  {
-    title: "Ralph Edwards",
-    desc: "Hi! How are you doing?.....",
-    active: false,
-    hasnotifaction: true,
-    notification_count: 8,
-    image: "user3.png",
-    link: "#",
-  },
-  {
-    title: "Cody Fisher",
-    desc: "Hi! How are you doing?.....",
-    active: true,
-    hasnotifaction: false,
-    image: "user4.png",
-    link: "#",
-  },
+  // {
+  //   title: "Wade Warren",
+  //   desc: "Hi! How are you doing?.....",
+  //   active: true,
+  //   hasnotifaction: true,
+  //   notification_count: 1,
+  //   image: "user.png",
+  //   link: "#",
+  // },
+  // {
+  //   title: "Savannah Nguyen",
+  //   desc: "Hi! How are you doing?.....",
+  //   active: false,
+  //   hasnotifaction: false,
+  //   image: "user2.png",
+  //   link: "#",
+  // },
+  // {
+  //   title: "Ralph Edwards",
+  //   desc: "Hi! How are you doing?.....",
+  //   active: false,
+  //   hasnotifaction: true,
+  //   notification_count: 8,
+  //   image: "user3.png",
+  //   link: "#",
+  // },
+  // {
+  //   title: "Cody Fisher",
+  //   desc: "Hi! How are you doing?.....",
+  //   active: true,
+  //   hasnotifaction: false,
+  //   image: "user4.png",
+  //   link: "#",
+  // },
+  // {
+  //   title: "Savannah Nguyen",
+  //   desc: "Hi! How are you doing?.....",
+  //   active: false,
+  //   hasnotifaction: false,
+  //   image: "user2.png",
+  //   link: "#",
+  // },
+  // {
+  //   title: "Ralph Edwards",
+  //   desc: "Hi! How are you doing?.....",
+  //   active: false,
+  //   hasnotifaction: true,
+  //   notification_count: 8,
+  //   image: "user3.png",
+  //   link: "#",
+  // },
+  // {
+  //   title: "Cody Fisher",
+  //   desc: "Hi! How are you doing?.....",
+  //   active: true,
+  //   hasnotifaction: false,
+  //   image: "user4.png",
+  //   link: "#",
+  // },
 ];
 
 export const topMenu = [

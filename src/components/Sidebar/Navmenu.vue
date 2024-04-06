@@ -1,7 +1,7 @@
 <template>
   <ul>
     <li
-      v-for="(item, i) in items"
+      v-for="(item, i) in items.filter(i => i.roles ? i.roles.some(el => currentUser.roles.includes(el)) : true)"
       :key="i"
       :class="`
       ${item.child ? 'item-has-children' : ''}
@@ -136,6 +136,12 @@ export default {
     },
     items: { type: Array, required: true },
     childrenLinks: { type: Array, default: null },
+  },
+
+  computed: {
+    currentUser() {
+      return this.$store.state.auth.user;
+    },
   },
 
   methods: {

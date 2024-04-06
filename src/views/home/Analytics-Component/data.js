@@ -293,15 +293,15 @@ export const shapeLine4 = {
 export const columnCharthome = {
   series: [
     {
-      name: "Net Profit",
+      name: "Paid Claims",
       data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
     },
     {
-      name: "Revenue",
+      name: "Verified Claims",
       data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
     },
     {
-      name: "Free Cash Flow",
+      name: "Flagged Claims",
       data: [35, 41, 36, 26, 45, 48, 52, 53, 41],
     },
   ],
@@ -341,7 +341,7 @@ export const columnCharthome = {
       },
     },
     title: {
-      text: "Revenue Report",
+      text: "Claims Report",
       align: "left",
       offsetX: 0,
       offsetY: 13,

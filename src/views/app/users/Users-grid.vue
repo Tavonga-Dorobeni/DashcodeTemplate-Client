@@ -119,10 +119,10 @@
         <Textinput
           label="Password"
           type="password"
-          v-model="currentUser.newpassword"
-          placeholder="Enter Password"
+          :modelValue="'********'"
+          placeholder="---------"
           name="password"
-          :isReadonly="view"
+          isReadonly
         />
         <Textinput
           label="National ID"
@@ -133,7 +133,7 @@
           :isReadonly="view"
         />
         <VueSelect v-if="!view" label="Roles"
-          ><vSelect :options="['Supervisor', 'Viewer']" v-model="currentUser.user_roles" multiple
+          ><vSelect :options="['Insurance Receptionist', 'Insurance Admin', 'Hospital Receptionist', 'Hospital Admin']" v-model="currentUser.user_roles" multiple
         /></VueSelect>
         <Textinput
           v-else

@@ -82,56 +82,56 @@ export default {
       ],
       items: [
         {
-          title: "How does Dashcode work?",
+          title: "How does MIFP work?",
           content:
             "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
         },
         {
-          title: "Where i can learn more about using Dashcode?",
+          title: "Where i can learn more about using MIFP?",
           content:
             "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
         },
         {
-          title: "Why Dashcode is so important?",
+          title: "Why MIFP is so important?",
           content:
             "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
         },
         {
-          title: "Where can i find Dashcode?",
+          title: "Where can i find MIFP?",
           content:
             "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
         },
         {
-          title: "Why Dashcode is so important?",
+          title: "Why MIFP is so important?",
           content:
             "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
         },
       ],
       items2: [
         {
-          title: "How does Dashcode work?",
+          title: "How does MIFP work?",
           content:
             "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
         },
         {
-          title: "Where i can learn more about using Dashcode?",
+          title: "Where i can learn more about using MIFP?",
           content:
             "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
         },
       ],
       items3: [
         {
-          title: "How does Dashcode work?",
+          title: "How does MIFP work?",
           content:
             "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
         },
         {
-          title: "Where i can learn more about using Dashcode?",
+          title: "Where i can learn more about using MIFP?",
           content:
             "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
         },
         {
-          title: "Where can i find Dashcode?",
+          title: "Where can i find MIFP?",
           content:
             "Jornalists call this critical, introductory section the  and when bridge properly executed, it's the that carries your reader from anheadine try at attention-grabbing to the body of your blog post.",
         },

@@ -5,13 +5,13 @@
         <div class="max-w-[520px] pt-20 pl-20">
           <router-link to="/">
             <img
-              src="@/assets/images/logo/logo.svg"
+              src="@/assets/images/logo/MIFP.png"
               alt=""
               class="mb-10"
               v-if="!this.$store.state.isDark"
             />
             <img
-              src="@/assets/images/logo/logo-white.svg"
+              src="@/assets/images/logo/MIFP-white.png"
               alt=""
               class="mb-10"
               v-else
@@ -19,9 +19,9 @@
           </router-link>
 
           <h4>
-            Unlock your Project
+            Medical Insurance
             <span class="text-slate-800 dark:text-slate-400 font-bold"
-              >performance</span
+              >Fraud Prevention</span
             >
           </h4>
         </div>
@@ -29,7 +29,7 @@
           class="absolute left-0 2xl:bottom-[-160px] bottom-[-130px] h-full w-full z-[-1]"
         >
           <img
-            src="@/assets/images/auth/ils1.svg"
+            src="@/assets/images/auth/mifp.png"
             alt=""
             class="h-full w-full object-contain"
           />
@@ -43,13 +43,13 @@
             <div class="mobile-logo text-center mb-6 lg:hidden block">
               <router-link to="/">
                 <img
-                  src="@/assets/images/logo/logo.svg"
+                  src="@/assets/images/logo/MIFP.png"
                   alt=""
                   class="mx-auto"
                   v-if="!this.$store.state.isDark"
                 />
                 <img
-                  src="@/assets/images/logo/logo-white.svg"
+                  src="@/assets/images/logo/MIFP-white.png"
                   alt=""
                   class="mx-auto"
                   v-else
@@ -59,11 +59,11 @@
             <div class="text-center 2xl:mb-10 mb-4">
               <h4 class="font-medium">Sign in</h4>
               <div class="text-slate-500 text-base">
-                Sign in to your account to start using Dashcode
+                Sign in to your account to start using MIFP
               </div>
             </div>
             <Signin />
-            <div
+            <!-- <div
               class="relative border-b-[#9AA2AF] border-opacity-[16%] border-b pt-6"
             >
               <div
@@ -74,8 +74,8 @@
             </div>
             <div class="max-w-[242px] mx-auto mt-8 w-full">
               <Social />
-            </div>
-            <div
+            </div> -->
+            <!-- <div
               class="md:max-w-[345px] mx-auto font-normal text-slate-500 dark:text-slate-400 mt-12 uppercase text-sm"
             >
               Don’t have an account? Sign up
@@ -85,10 +85,10 @@
               >
                 Sign up
               </router-link>
-            </div>
+            </div> -->
           </div>
           <div class="auth-footer text-center">
-            Copyright 2021, Dashcode All Rights Reserved.
+            Copyright 2021, MIFP All Rights Reserved.
           </div>
         </div>
       </div>

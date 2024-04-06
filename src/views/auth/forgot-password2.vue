@@ -9,7 +9,7 @@
             <div class="mobile-logo text-center mb-6 lg:hidden block">
               <router-link to="/"
                 ><img
-                  src="@/assets/images/logo/logo.svg"
+                  src="@/assets/images/logo/MIFP.png"
                   alt=""
                   class="mx-auto"
               /></router-link>
@@ -17,7 +17,7 @@
             <div class="text-center 2xl:mb-10 mb-5">
               <h4 class="font-medium mb-4">Forgot Your Password?</h4>
               <div class="text-slate-500 dark:text-slate-400 text-base">
-                Reset Password with Dashcode.
+                Reset Password with MIFP.
               </div>
             </div>
             <div
@@ -41,7 +41,7 @@
             </div>
           </div>
           <div class="auth-footer text-center">
-            Copyright 2021, Dashcode All Rights Reserved.
+            Copyright 2021, MIFP All Rights Reserved.
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@
           <div class="flex-1 flex flex-col justify-center items-center">
             <router-link to="/">
               <img
-                src="@/assets/images/logo/logo-white.svg"
+                src="@/assets/images/logo/MIFP-white.png"
                 alt=""
                 class="mb-10"
               />

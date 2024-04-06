@@ -1,7 +1,7 @@
 <template>
   <div>
     <Card>
-      <div class="dashcode-calender">
+      <div class="MIFP-calender">
         <FullCalendar
           ref="fullCalendar"
           :options="calendarOptions"
@@ -424,7 +424,7 @@ export default {
 .fc-daygrid-event-dot {
   @apply hidden;
 }
-.dashcode-calender {
+.MIFP-calender {
   .bg-primary-500 {
     @apply bg-[#4669FA] border-none text-white text-center px-2 font-medium text-sm;
   }

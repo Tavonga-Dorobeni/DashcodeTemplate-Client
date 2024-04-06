@@ -71,7 +71,7 @@ export default {
                 title: "Rakibul Islam",
               },
             ],
-            name: "Dashcode Example Kanban",
+            name: "MIFP Example Kanban",
             des: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
             startDate: "2022-10-03",
             endDate: "2022-10-06",

@@ -92,7 +92,7 @@
                 name="id"
               />
               <VueSelect label="Roles"
-                ><vSelect :options="['Supervisor', 'Viewer']" v-model="user.roles" multiple
+                ><vSelect :options="['Insurance Receptionist', 'Insurance Admin', 'Hospital Receptionist', 'Hospital Admin']" v-model="user.roles" multiple
               /></VueSelect>
             </div>
           </form>

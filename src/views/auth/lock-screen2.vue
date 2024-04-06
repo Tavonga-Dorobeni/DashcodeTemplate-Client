@@ -9,7 +9,7 @@
             <div class="mobile-logo text-center mb-6 lg:hidden block">
               <router-link to="/"
                 ><img
-                  src="@/assets/images/logo/logo.svg"
+                  src="@/assets/images/logo/MIFP.png"
                   alt=""
                   class="mx-auto"
               /></router-link>
@@ -49,7 +49,7 @@
             </div>
           </div>
           <div class="auth-footer text-center">
-            Copyright 2021, Dashcode All Rights Reserved.
+            Copyright 2021, MIFP All Rights Reserved.
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@
           <div class="flex-1 flex flex-col justify-center items-center">
             <router-link to="/">
               <img
-                src="@/assets/images/logo/logo-white.svg"
+                src="@/assets/images/logo/MIFP-white.png"
                 alt=""
                 class="mb-10"
               />

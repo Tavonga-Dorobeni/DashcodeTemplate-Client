@@ -10,7 +10,7 @@
       <div class="left-columns lg:w-1/2 lg:block hidden">
         <div class="logo-box-3">
           <router-link to="/" class="">
-            <img src="@/assets/images/logo/logo-white.svg" alt="" />
+            <img src="@/assets/images/logo/MIFP-white.png" alt="" />
           </router-link>
         </div>
       </div>
@@ -18,13 +18,13 @@
         <div class="auth-box-3">
           <div class="mobile-logo text-center mb-6 lg:hidden block">
             <router-link to="/"
-              ><img src="@/assets/images/logo/logo.svg" alt="" class="mx-auto"
+              ><img src="@/assets/images/logo/MIFP.png" alt="" class="mx-auto"
             /></router-link>
           </div>
           <div class="text-center 2xl:mb-10 mb-5">
             <h4 class="font-medium">Sign In</h4>
             <div class="text-slate-500 dark:text-slate-400 text-base">
-              Sign in to your account to start using Dashcode
+              Sign in to your account to start using MIFP
             </div>
           </div>
           <Signin />

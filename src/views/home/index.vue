@@ -12,14 +12,13 @@
         >
           <div class="max-w-[169px]">
             <div class="text-xl font-medium text-slate-900 mb-2">
-              Upgrade your Dashcode
+              Welcome to your MIFP
             </div>
-            <p class="text-sm text-slate-800">Pro plan for better results</p>
+            <p class="text-sm text-slate-800">Dashboard</p>
           </div>
           <div
             class="absolute top-1/2 -translate-y-1/2 right-6 mt-2 h-12 w-12 bg-white text-slate-900 rounded-full text-xs font-medium flex flex-col items-center justify-center"
           >
-            Now
           </div>
         </div>
       </div>
@@ -94,188 +93,6 @@
           />
         </Card>
       </div>
-      <div class="lg:col-span-8 col-span-12">
-        <Card title="All company" noborder>
-          <template #header>
-            <DropEvent />
-          </template>
-          <CompanyTable class="-mx-6 -mb-6" />
-        </Card>
-      </div>
-      <div class="lg:col-span-4 col-span-12">
-        <Card title="Recent activity">
-          <template #header>
-            <DropEvent />
-          </template>
-          <ul class="list-item space-y-3 h-full overflow-x-auto">
-            <li
-              class="flex items-center space-x-3 border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0"
-              v-for="(item, i) in activity"
-              :key="i"
-            >
-              <div>
-                <div class="w-8 h-8 rounded-[100%]">
-                  <img
-                    :src="item.img"
-                    alt=""
-                    class="w-full h-full rounded-[100%] object-cover"
-                  />
-                </div>
-              </div>
-              <div
-                class="text-start overflow-hidden text-ellipsis whitespace-nowrap max-w-[63%]"
-              >
-                <div
-                  class="text-sm text-slate-600 dark:text-slate-300 overflow-hidden text-ellipsis whitespace-nowrap"
-                >
-                  Finance KPI Mobile app launch preparion meeting.
-                </div>
-              </div>
-              <div class="flex-1 text-right">
-                <div
-                  class="text-sm font-light text-slate-400 dark:text-slate-400"
-                >
-                  1 hours
-                </div>
-              </div>
-            </li>
-          </ul>
-        </Card>
-      </div>
-      <div class="lg:col-span-8 col-span-12">
-        <Card title="Most sales">
-          <template #header>
-            <div
-              class="border border-slate-200 dark:border-slate-700 dark:bg-slate-900 rounded p-1 flex items-center"
-            >
-              <span
-                class="flex-1 text-sm font-normal px-3 py-1 transition-all duration-150 rounded cursor-pointer"
-                :class="
-                  fillterMap === 'global'
-                    ? 'bg-slate-900 text-white dark:bg-slate-700 dark:text-slate-300'
-                    : 'dark:text-slate-300'
-                "
-                @click="fillterMap = 'global'"
-                >Global</span
-              >
-              <span
-                class="flex-1 text-sm font-normal px-3 py-1 rounded transition-all duration-150 cursor-pointer"
-                :class="
-                  fillterMap === 'usa'
-                    ? 'bg-slate-900 text-white dark:bg-slate-700 dark:text-slate-300'
-                    : 'dark:text-slate-300'
-                "
-                @click="fillterMap = 'usa'"
-                >USA</span
-              >
-            </div>
-          </template>
-          <div class="md:flex items-center">
-            <div class="flex-none">
-              <h4
-                class="text-slate-600 dark:text-slate-200 text-sm font-normal mb-[6px]"
-              >
-                Total earnings
-              </h4>
-              <div
-                class="tetx-lg font-medium mb-[6px] dark:text-white text-slate-900"
-                v-if="fillterMap === 'usa'"
-              >
-                $12,65,64787.00
-              </div>
-              <div
-                class="tetx-lg font-medium mb-[6px] dark:text-white text-slate-900"
-                v-if="fillterMap === 'global'"
-              >
-                $12,65.00
-              </div>
-              <div class="text-xs font-light dark:text-slate-200">
-                <span class="text-primary-500">+08%</span> From last month
-              </div>
-              <ul
-                class="bg-slate-50 dark:bg-slate-900 rounded p-4 min-w-[184px] space-y-5 mt-4"
-              >
-                <li
-                  v-for="(item, i) in mostSales"
-                  :key="i"
-                  class="flex justify-between text-xs text-slate-600 dark:text-slate-300"
-                >
-                  <span class="flex space-x-2 items-center">
-                    <span
-                      :class="item.cls"
-                      class="inline-flex h-[6px] w-[6px] bg-primary-500 ring-opacity-25 rounded-full ring-4"
-                    ></span>
-                    <span>{{ item.title }}</span></span
-                  >
-                  <span>{{ item.amount }}</span>
-                </li>
-              </ul>
-            </div>
-            <div class="flex-1">
-              <Map />
-            </div>
-          </div>
-        </Card>
-      </div>
-      <div class="lg:col-span-4 col-span-12">
-        <Card title="overview">
-          <template #header>
-            <SelectMonth />
-          </template>
-          <apexchart
-            type="radialBar"
-            height="300"
-            :options="
-              this.$store.state.isDark
-                ? gearradilDark.chartOptions
-                : gearradil.chartOptions
-            "
-            :series="gearradil.series"
-          />
-          <div
-            class="bg-slate-50 dark:bg-slate-900 rounded p-4 mt-8 flex justify-between flex-wrap"
-          >
-            <div class="space-y-1">
-              <h4
-                class="text-slate-600 dark:text-slate-200 text-xs font-normal"
-              >
-                Invested amount
-              </h4>
-              <div class="tetx-sm font-medium text-slate-900 dark:text-white">
-                $8264.35
-              </div>
-              <div
-                class="text-slate-500 dark:text-slate-300 text-xs font-normal"
-              >
-                +0.001.23 (0.2%)
-              </div>
-            </div>
-            <!-- !! end single -->
-            <div class="space-y-1">
-              <h4
-                class="text-slate-600 dark:text-slate-200 text-xs font-normal"
-              >
-                Invested amount
-              </h4>
-              <div class="tetx-sm font-medium text-slate-900 dark:text-white">
-                $8264.35
-              </div>
-            </div>
-            <!-- !! end single -->
-            <div class="space-y-1">
-              <h4
-                class="text-slate-600 dark:text-slate-200 text-xs font-normal"
-              >
-                Invested amount
-              </h4>
-              <div class="tetx-sm font-medium text-slate-900 dark:text-white">
-                $8264.35
-              </div>
-            </div>
-            <!-- !! end single -->
-          </div>
-        </Card>
-      </div>
     </div>
   </div>
 </template>
@@ -325,20 +142,20 @@ export default {
       statistics: [
         {
           name: shapeLine1,
-          title: 'Totel revenue',
-          count: '3,564',
+          title: 'Verified Claims',
+          count: '564',
           bg: 'bg-[#E5F9FF] dark:bg-slate-900	',
         },
         {
           name: shapeLine2,
-          title: 'Products sold',
-          count: '564',
+          title: 'Flagged Claims',
+          count: '78',
           bg: 'bg-[#FFEDE5] dark:bg-slate-900	',
         },
         {
           name: shapeLine3,
-          title: 'Growth',
-          count: '+5.0%',
+          title: 'Paid Claims',
+          count: '2,170',
           bg: 'bg-[#EAE5FF] dark:bg-slate-900	',
         },
       ],

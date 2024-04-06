@@ -95,7 +95,7 @@
                   <ul class="info-500-list">
                     <li>
                       <span>From:</span>
-                      <span>dashcode@gmail.com </span>
+                      <span>MIFP@gmail.com </span>
                     </li>
                     <li>
                       <span>To:</span>

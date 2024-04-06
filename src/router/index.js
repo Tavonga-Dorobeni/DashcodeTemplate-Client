@@ -684,7 +684,7 @@ router.beforeEach((to, from, next) => {
     words[i] = words[i][0].toUpperCase() + words[i].substr(1);
   }
 
-  document.title = "Dashcode  - " + words;
+  document.title = "MIFP  - " + words;
   next();
 });
 
