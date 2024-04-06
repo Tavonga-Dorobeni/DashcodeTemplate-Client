@@ -32,21 +32,21 @@ export const menuItems = [
     title: "Dependants",
     icon: "heroicons-outline:user-group",
     link: "dependants",
-    roles:["INSURANCE RECEPTIONIST", "HOSPITAL RECEPTIONIST"],
+    roles:["INSURANCE RECEPTIONIST", "HOSPITAL RECEPTIONIST", "PATIENT"],
   },
 
   {
     title: "Appointments",
     icon: "heroicons-outline:clipboard-document-check",
     link: "appointments",
-    roles:["HOSPITAL RECEPTIONIST"],
+    roles:["HOSPITAL RECEPTIONIST", "PATIENT"],
   },
 
   {
     title: "Claims",
     icon: "heroicons-outline:document-text",
     link: "claims",
-    roles:["HOSPITAL ADMIN", "INSURANCE ADMIN"],
+    roles:["HOSPITAL ADMIN", "INSURANCE ADMIN", "PATIENT"],
   },
 
   {

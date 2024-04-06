@@ -19,7 +19,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div v-if="!currentUser.roles.includes('PATIENT')">
           <Dropdown classMenuItems=" w-[130px]">
             <span
               class="text-lg inline-flex flex-col items-center justify-center h-8 w-8 rounded-full bg-gray-500-f7 dark:bg-slate-900 dark:text-slate-400"
@@ -364,7 +364,9 @@ import { useRouter } from 'vue-router';
 const store = useStore();
 const router = useRouter();
 
-const appointments = computed(() => store.getters.allAppointments);
+const currentUser = computed(() => store.state.auth.user);
+const Patient = computed(() => store.getters.allPatients.filter(p => p.Firstnames == currentUser.value.firstname && p.Surname == currentUser.value.lastname)[0]);
+const appointments = computed(() => currentUser.value.roles.includes('PATIENT') ? store.getters.allAppointments.filter(a => a.PatientID == Patient.value.PatientID) : store.getters.allAppointments);
 const patients = computed(() => store.getters.allPatients);
 const dependants = computed(() => store.getters.allDependants);
 const users = computed(() => store.getters.allUsers);

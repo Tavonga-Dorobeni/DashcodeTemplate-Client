@@ -4,6 +4,7 @@
       <Breadcrumb />
 
       <div
+        v-if="!currentUser.roles.includes('PATIENT')"
         class="md:flex md:space-x-4 md:justify-end items-center"
         :class="width < 768 ? 'space-x-rb' : ''"
       >
@@ -331,6 +332,7 @@ onMounted(() => {
   })
 });
 
+const currentUser = computed(() => store.state.auth.user);
 const appointments = computed(() => store.getters.allAppointments);
 const patients = computed(() => store.getters.allPatients);
 const dependants = computed(() => store.getters.allDependants);
